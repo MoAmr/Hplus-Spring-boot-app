@@ -23,4 +23,16 @@ public class HomeController {
         System.out.println("Going to search page!");
         return "search";
     }
+
+    @GetMapping("/goToLogin")
+    public String goToLogin() {
+        System.out.println("Going to login page!");
+        return "login";
+    }
+
+    @GetMapping("/goToRegistration")
+    public String goToRegistration() {
+        System.out.println("Going to Registration page!");
+        return "register";
+    }
 }
