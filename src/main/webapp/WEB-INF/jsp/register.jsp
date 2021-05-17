@@ -53,6 +53,7 @@
 
     			<label>Date of birth</label>
     			<form:input path="dateOfBirth" type="date" /><br/>
+				<form:errors path="dateOfBirth" cssClass="error"/>
     			<label>Gender</label>
 				 <form:select path="gender" items="${genderItems}"/>
     			<br/>
