@@ -2,6 +2,7 @@ package com.test.hplus.exceptions;
 
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.context.request.async.AsyncRequestTimeoutException;
 
 /**
  * @author Mohammed Amr
@@ -12,7 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 @ControllerAdvice
 public class ApplicationExceptionHandler {
 
-    @ExceptionHandler(ApplicationException.class)
+    @ExceptionHandler({ApplicationException.class, AsyncRequestTimeoutException.class})
     public String handleException() {
         System.out.println("In global exception handler");
         return "error";
