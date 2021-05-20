@@ -1,5 +1,6 @@
 package com.test.hplus.interceptors;
 
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 import javax.servlet.http.Cookie;
@@ -34,5 +35,10 @@ public class LoggingInterceptor extends HandlerInterceptorAdapter {
         + " at " + new Date() + " for " + request.getRequestURI());
 
         return true;
+    }
+
+    @Override
+    public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
+        System.out.println("In post handle");
     }
 }
