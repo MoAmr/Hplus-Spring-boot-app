@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import javax.servlet.http.HttpSession;
+
 /**
  * @author Mohammed Amr
  * @created 17/05/2021 - 21:15
@@ -26,7 +28,10 @@ public class LoginController {
     private UserRepository userRepository;
 
     @PostMapping("/login")
-    public String login(@ModelAttribute("login") Login login) {
+    public String login(@ModelAttribute("login") Login login, HttpSession session) {
+        //full session management
+        //with session object
+        // session.setAttribute("", "");
         User user = userRepository.searchByName(login.getUsername());
         if (user == null) {
             throw new ApplicationException("user not found!");
