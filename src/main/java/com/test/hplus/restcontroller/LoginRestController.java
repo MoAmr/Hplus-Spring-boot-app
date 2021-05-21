@@ -2,6 +2,7 @@ package com.test.hplus.restcontroller;
 
 import com.test.hplus.beans.Login;
 import com.test.hplus.beans.User;
+import com.test.hplus.exceptions.LoginFailureException;
 import com.test.hplus.repositrory.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,7 +24,7 @@ public class LoginRestController {
     private UserRepository userRepository;
 
     @PostMapping("/hplus/rest/loginuser")
-    public ResponseEntity loginUser(@RequestBody Login login) {
+    public ResponseEntity loginUser(@RequestBody Login login) throws LoginFailureException {
         System.out.println(login.getUsername() + " " + login.getPassword());
         User user = userRepository.searchByName(login.getUsername());
 
@@ -35,7 +36,7 @@ public class LoginRestController {
         && user.getPassword().equals(login.getPassword())) {
             return new ResponseEntity<>(HttpStatus.OK);
         } else {
-
+            throw new LoginFailureException("Invalid username or password!");
         }
     }
 }
