@@ -31,7 +31,7 @@ public class LoginController {
         if (user == null) {
             throw new ApplicationException("user not found!");
         }
-        return "search";
+        return "forward:/userprofile";
     }
 
     @ExceptionHandler(ApplicationException.class)

@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.SessionAttribute;
 public class UserProfileController {
 
     @PostMapping("/userprofile")
-    public String getsUserProfile(@SessionAttribute("login")Login login, Model model) {
+    public String getUserProfile(@SessionAttribute("login")Login login, Model model) {
         System.out.println("In user profile controller!");
+        System.out.println("username from session: " + login.getUsername());
+        model.addAttribute("username", login.getUsername());
         return "profile";
     }
 }
